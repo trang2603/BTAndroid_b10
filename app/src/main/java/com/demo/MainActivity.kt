@@ -37,6 +37,8 @@ class MainActivity : AppCompatActivity() {
                 binding.granted.setTextColor(getColor(R.color.green))
                 binding.btnStart.setBackgroundColor(getColor(R.color.green))
                 binding.btnStart.setOnClickListener {
+                    binding.lat.visibility = View.VISIBLE
+                    binding.lng.visibility = View.VISIBLE
                     getLastLocation()
                 }
             } else {
@@ -72,6 +74,8 @@ class MainActivity : AppCompatActivity() {
             binding.granted.setTextColor(getColor(R.color.green))
             binding.btnStart.setBackgroundColor(getColor(R.color.green))
             binding.btnStart.setOnClickListener {
+                binding.lat.visibility = View.VISIBLE
+                binding.lng.visibility = View.VISIBLE
                 getLastLocation()
             }
         }
@@ -80,8 +84,6 @@ class MainActivity : AppCompatActivity() {
     private fun getLastLocation() {
         fusedLocationClient.lastLocation.addOnSuccessListener { location ->
             if (location != null) {
-                binding.lat.visibility = View.VISIBLE
-                binding.lng.visibility = View.VISIBLE
                 binding.lat.text = "Lat: ${location.latitude}"
                 binding.lng.text = "Lng: ${location.longitude}"
             } else {
